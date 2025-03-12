@@ -102,7 +102,7 @@ export default {
     },
     methods: {
         fetchWorkZones() {
-            axios.get('/new_sheet_report/api/get/zone')
+            axios.get('/new_sheet_report/get/zone')
                 .then(response => {
                     this.workZones = response.data;
 

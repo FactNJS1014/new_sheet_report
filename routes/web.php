@@ -18,7 +18,7 @@ Route::get('/{any}', function () {
     return view('app');
 })->where('any', '.*');
 
-
+Route::get('/get/zone',[ReportSheetController::class, 'getDataZone'])->name('get.zone');
 Route::post('/send/zone',[ReportSheetController::class, 'sendDataZone'])->name('send.zone');
 Route::post('/send/show',[ReportSheetController::class, 'showTableData'])->name('show.table');
 Route::post('/send/report',[ReportSheetController::class, 'showReportData'])->name('show.report');
