@@ -8,9 +8,11 @@
     <title>CheckSheet Report</title>
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
+    <link rel="stylesheet" href="{{ asset('primeicons/primeicons.css')}}">
+
 </head>
 <body>
     <div id="app"></div>
-    
+
 </body>
 </html>
