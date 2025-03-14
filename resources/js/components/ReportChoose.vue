@@ -42,7 +42,7 @@
             </div>
             <div class="w-full mt-5 overflow-x-auto border border-base-content/25">
                 <DataTable :value="details" showGridlines tableStyle="min-width: 50rem" class="text-lg font-medium"
-                    paginator :rows="10" :rowsPerPageOptions="[5, 10, 20, 50]" scrollable scrollHeight="500px">
+                    paginator :rows="50" :rowsPerPageOptions="[50,100]" scrollable scrollHeight="500px">
                     <template #header>
                         <div class="pb-4 text-end">
                             <Button @click="exportExcel()"
