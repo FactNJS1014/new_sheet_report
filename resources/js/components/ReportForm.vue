@@ -81,7 +81,7 @@
 <script>
 import axios from 'axios';
 export default {
-    
+
     data() {
         return {
             forms:{
@@ -98,11 +98,11 @@ export default {
         this.fetchWorkZones();
         const datenow = new Date();
         this.forms.date = datenow.toISOString().split('T')[0]; // Convert date to ISO format
-        
+
     },
     methods: {
         fetchWorkZones() {
-            axios.get('/new_sheet_report/get/zone')
+            axios.get('/new_sheet_report/api/get/zone')
                 .then(response => {
                     this.workZones = response.data;
 
@@ -136,7 +136,7 @@ export default {
             //console.log("Form submitted:", this.forms);
             localStorage.setItem("form", JSON.stringify(this.forms))
             this.$router.push('/choose');
-        }   
+        }
 
 
     }
