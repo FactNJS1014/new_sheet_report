@@ -4,21 +4,21 @@
             <div class="grid grid-cols-2">
                 <div class="flex flex-col">
                     <div class="join">
-                        <p class="w-full p-5 text-xl font-semibold text-blue-800 bg-blue-100 join-item">ชื่อเอกสาร:</p>
-                        <p class="w-full p-5 text-xl font-semibold text-blue-800 bg-white join-item">{{ name }}</p>
+                        <p class="w-full p-2 text-md font-semibold text-blue-800 bg-blue-100 join-item">ชื่อเอกสาร:</p>
+                        <p class="w-full p-2 text-md font-semibold text-blue-800 bg-white join-item">{{ name }}</p>
                     </div>
                     <div class="mt-2 join">
-                        <p class="w-full p-5 text-xl font-semibold text-blue-800 bg-blue-100 join-item">หมายเลขเอกสาร:
+                        <p class="w-full p-2 text-md font-semibold text-blue-800 bg-blue-100 join-item">หมายเลขเอกสาร:
                         </p>
-                        <p class="w-full p-5 text-xl font-semibold text-blue-800 bg-white join-item">{{ hid }}</p>
+                        <p class="w-full p-2 text-mdfont-semibold text-blue-800 bg-white join-item">{{ hid }}</p>
                     </div>
                     <div class="mt-2 join">
-                        <p class="w-full p-5 text-xl font-semibold text-blue-800 bg-blue-100 join-item">เวอร์ชัน:</p>
-                        <p class="w-full p-5 text-xl font-semibold text-blue-800 bg-white join-item">{{ rev }}</p>
+                        <p class="w-full p-2 text-md font-semibold text-blue-800 bg-blue-100 join-item">เวอร์ชัน:</p>
+                        <p class="w-full p-2 text-md font-semibold text-blue-800 bg-white join-item">{{ rev }}</p>
                     </div>
                     <div class="mt-2 join">
-                        <p class="w-full p-5 text-xl font-semibold text-blue-800 bg-blue-100 join-item">หมายเลข:</p>
-                        <p class="w-full p-5 text-xl font-semibold text-blue-800 bg-white join-item">{{ rid }}</p>
+                        <p class="w-full p-2 text-md font-semibold text-blue-800 bg-blue-100 join-item">หมายเลข:</p>
+                        <p class="w-full p-2 text-md font-semibold text-blue-800 bg-white join-item">{{ rid }}</p>
                     </div>
 
 
@@ -42,7 +42,7 @@
             </div>
             <div class="w-full mt-5 overflow-x-auto border border-base-content/25">
                 <DataTable :value="details" showGridlines tableStyle="min-width: 50rem" class="text-lg font-medium"
-                    paginator :rows="50" :rowsPerPageOptions="[50,100]" scrollable scrollHeight="500px">
+                    paginator :rows="50" :rowsPerPageOptions="[50,100]" scrollable :scrollHeight="dynamicHeight">
                     <template #header>
                         <div class="pb-4 text-end">
                             <Button @click="exportExcel()"
@@ -51,22 +51,24 @@
                     </template>
                     <Column field="LNNO" header="ลำดับ">
                     </Column>
+                    <!-- <Column header="ผลลัพธ์" style="min-width: 200px;" >
+                        <template #body="{ data }">
+                            <span class="text-lg font-semibold text-green-500">{{ data.RESULT }}</span>
+                        </template>
+                    </Column> -->
+                    <Column header="Status" style="min-width: 100px;">
+                        <template #body="{ data }">
+                            <span v-if="data.RESULT"><span class="icon-[material-symbols-light--check-circle] size-9 text-green-500"></span></span>
+                            <span v-else><span class="icon-[material-symbols-light--check-circle] size-9 text-red-500"></span></span>
+                        </template>
+                    </Column>
                     <Column field="DESC1" header="รายละเอียด" style="min-width: 400px;"></Column>
                     <Column field="DESC2" header="วิธีการ" style="min-width: 400px;"></Column>
                     <Column field="DESC3" header="มาตรฐาน" style="min-width: 500px;"></Column>
                     <Column field="TOOLS" header="เครื่องมือ" style="min-width: 200px;"></Column>
                     <Column field="ANSWER" header="คำตอบ" style="min-width: 200px;"></Column>
-                    <Column header="ผลลัพธ์" style="min-width: 200px;" >
-                        <template #body="{ data }">
-                            <span class="text-lg font-semibold text-green-500">{{ data.RESULT }}</span>
-                        </template>
-                    </Column>
-                    <Column header="Status" style="min-width: 100px;">
-                        <template #body="{ data }">
-                            <span v-if="data.RESULT"><span class="icon-[material-symbols-light--check-circle] size-9 text-green-500"></span></span>
-                        </template>
-                    </Column>
-                    <Column field="EMPNAME" header="ชื่อผู้ตรวจสอบ" style="min-width: 200px;"></Column>
+                   
+                    <Column field="EMPNAME" header="ชื่อผู้ตรวจสอบ" style="min-width: 400px;"></Column>
                     <Column field="SHIFT" header="กะงาน" style="min-width: 200px;"></Column>
                     <Column field="LINE" header="ไลน์" style="min-width: 200px;"></Column>
                     <Column field="MC" header="หมายเลขเครื่องจักร" style="min-width: 200px;"></Column>
@@ -93,6 +95,7 @@ import Button from 'primevue/button';
 export default {
     data() {
         return {
+            dynamicHeight: '1000px',
             doc_id: '',
             results: [],
             details: [],
@@ -144,7 +147,7 @@ export default {
             return useDateFormat(date, 'DD/MM/YYYY').value;
         },
         exportExcel() {
-          
+
 
             // Define the mapping between JSON field names and table headers
             const fieldMapping = {
@@ -168,9 +171,9 @@ export default {
                 for (const key in item) {
                     if (fieldMapping[key]) {
                         mappedItem[fieldMapping[key]] = item[key];
-                        
+
                     }
-                    
+
                 }
                 //console.log(mappedItem)
                 return mappedItem;

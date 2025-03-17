@@ -1,6 +1,6 @@
 <template>
     <div class="flex justify-center mt-5">
-        <ul class="space-x-10 menu lg:menu-horizontal">
+        <ul class="space-x-10 menu lg:menu-horizontal menu-horizontal">
             <li>
                 <router-link to="/" active-class="text-xl font-semibold text-white bg-blue-500 hover:bg-slate-200 hover:text-blue-500">
                     <span class="icon-[ic--baseline-assignment] size-9"></span>
