@@ -4,21 +4,21 @@
             <div class="grid grid-cols-2">
                 <div class="flex flex-col">
                     <div class="join">
-                        <p class="w-full p-2 text-md font-semibold text-blue-800 bg-blue-100 join-item">ชื่อเอกสาร:</p>
-                        <p class="w-full p-2 text-md font-semibold text-blue-800 bg-white join-item">{{ name }}</p>
+                        <p class="w-full p-2 font-semibold text-blue-800 bg-blue-100 text-md join-item">ชื่อเอกสาร:</p>
+                        <p class="w-full p-2 font-semibold text-blue-800 bg-white text-md join-item">{{ name }}</p>
                     </div>
                     <div class="mt-2 join">
-                        <p class="w-full p-2 text-md font-semibold text-blue-800 bg-blue-100 join-item">หมายเลขเอกสาร:
+                        <p class="w-full p-2 font-semibold text-blue-800 bg-blue-100 text-md join-item">หมายเลขเอกสาร:
                         </p>
-                        <p class="w-full p-2 text-mdfont-semibold text-blue-800 bg-white join-item">{{ hid }}</p>
+                        <p class="w-full p-2 text-blue-800 bg-white text-mdfont-semibold join-item">{{ hid }}</p>
                     </div>
                     <div class="mt-2 join">
-                        <p class="w-full p-2 text-md font-semibold text-blue-800 bg-blue-100 join-item">เวอร์ชัน:</p>
-                        <p class="w-full p-2 text-md font-semibold text-blue-800 bg-white join-item">{{ rev }}</p>
+                        <p class="w-full p-2 font-semibold text-blue-800 bg-blue-100 text-md join-item">เวอร์ชัน:</p>
+                        <p class="w-full p-2 font-semibold text-blue-800 bg-white text-md join-item">{{ rev }}</p>
                     </div>
                     <div class="mt-2 join">
-                        <p class="w-full p-2 text-md font-semibold text-blue-800 bg-blue-100 join-item">หมายเลข:</p>
-                        <p class="w-full p-2 text-md font-semibold text-blue-800 bg-white join-item">{{ rid }}</p>
+                        <p class="w-full p-2 font-semibold text-blue-800 bg-blue-100 text-md join-item">หมายเลข:</p>
+                        <p class="w-full p-2 font-semibold text-blue-800 bg-white text-md join-item">{{ rid }}</p>
                     </div>
 
 
@@ -67,7 +67,7 @@
                     <Column field="DESC3" header="มาตรฐาน" style="min-width: 500px;"></Column>
                     <Column field="TOOLS" header="เครื่องมือ" style="min-width: 200px;"></Column>
                     <Column field="ANSWER" header="คำตอบ" style="min-width: 200px;"></Column>
-                   
+
                     <Column field="EMPNAME" header="ชื่อผู้ตรวจสอบ" style="min-width: 400px;"></Column>
                     <Column field="SHIFT" header="กะงาน" style="min-width: 200px;"></Column>
                     <Column field="LINE" header="ไลน์" style="min-width: 200px;"></Column>
